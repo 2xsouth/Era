@@ -8,19 +8,19 @@ const commonConfig = {
 
 // 1. Primary Model: The newest free-tier model
 const primaryLLM = new ChatGoogleGenerativeAI({
-  model: 'gemini-3.7-flash',
+  model: 'gemini-1.5-flash',
   ...commonConfig,
 });
 
-// 2. First Fallback: If 3.7 runs out of quota, use 3.8-flash
+// 2. First Fallback: If primary runs out of quota
 const fallbackLLM1 = new ChatGoogleGenerativeAI({
-  model: 'gemini-3.8-flash',
+  model: 'gemini-1.5-pro',
   ...commonConfig,
 });
 
 // 3. Second Fallback: A rock-solid stable free-tier model as a last resort
 const fallbackLLM2 = new ChatGoogleGenerativeAI({
-  model: 'gemini-2.5-flash',
+  model: 'gemini-1.5-flash-8b',
   ...commonConfig,
 });
 

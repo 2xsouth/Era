@@ -3,9 +3,8 @@ import { resolve } from "path";
 // Load .env.local
 config({ path: resolve(__dirname, "../.env.local") });
 
-import { runAgentWorkflow } from "./agents/graph";
-
 async function run() {
+  const { runAgentWorkflow } = await import("./agents/graph");
   console.log("🚀 Testing the Era South AI Developer...");
   console.log("Checking API Keys...");
   console.log("GOOGLE_API_KEY:", process.env.GOOGLE_API_KEY ? "Set" : "Not Set");
