@@ -4,8 +4,8 @@ import { useState } from "react";
 import { RefreshCw, ArrowLeft, ArrowRight, Home, Lock } from "lucide-react";
 
 export function BrowserPreview() {
-  const [url, setUrl] = useState("http://localhost:3001");
-  const [inputUrl, setInputUrl] = useState("localhost:3001");
+  const [url, setUrl] = useState("http://localhost:3001/demo");
+  const [inputUrl, setInputUrl] = useState("localhost:3001/demo");
   const [key, setKey] = useState(0);
 
   const handleRefresh = () => {
@@ -29,7 +29,7 @@ export function BrowserPreview() {
           <ArrowLeft className="w-4 h-4 cursor-pointer hover:text-gray-600" />
           <ArrowRight className="w-4 h-4 cursor-pointer hover:text-gray-600" />
           <RefreshCw className="w-4 h-4 cursor-pointer hover:text-gray-600" onClick={handleRefresh} />
-          <Home className="w-4 h-4 cursor-pointer hover:text-gray-600 ml-2" onClick={() => { setUrl("http://localhost:3001"); setInputUrl("localhost:3001"); }} />
+          <Home className="w-4 h-4 cursor-pointer hover:text-gray-600 ml-2" onClick={() => { setUrl("http://localhost:3001/demo"); setInputUrl("localhost:3001/demo"); }} />
         </div>
         
         <form onSubmit={handleNavigate} className="flex-1 bg-white border border-gray-200 rounded-md px-3 flex items-center gap-2 text-sm">
