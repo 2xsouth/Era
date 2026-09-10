@@ -24,7 +24,11 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const fullPath = path.join(process.cwd(), filepath);
-    await fs.writeFile(fullPath, body.content, 'utf8');
+    
+    // Ensure directory exists
+    await fs.mkdir(path.dirname(fullPath), { recursive: true });
+    
+    await fs.writeFile(fullPath, body.content || '', 'utf8');
     return NextResponse.json({ success: true });
   } catch (e) {
     return NextResponse.json({ error: 'Could not save file' }, { status: 500 });
