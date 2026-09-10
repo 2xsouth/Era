@@ -59,7 +59,7 @@ export default function DemoPage() {
           </motion.div>
           
           <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-bold tracking-tight mb-8 max-w-4xl leading-tight">
-            Build incredible things with <br/>
+            Make incredible things with <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
               unmatched precision
             </span>
