@@ -58,22 +58,18 @@ export function CodeEditorView() {
         language: metadata.language
       };
       
+      const existingFile = files.find(f => f.path === path);
+      if (existingFile) {
+        setActiveFile(existingFile);
+        setIsCreatingFile(false);
+        setNewFilePath("");
+        return;
+      }
+      
       setFiles([...files, newFile]);
       setActiveFile(newFile);
       setIsCreatingFile(false);
       setNewFilePath("");
-      setCode("");
-      setHasChanges(false);
-      
-      try {
-        await fetch(`/api/file?path=${encodeURIComponent(path)}`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ content: "" }),
-        });
-      } catch (e) {
-        console.error(e);
-      }
     } else if (e.key === 'Escape') {
       setIsCreatingFile(false);
       setNewFilePath("");
@@ -88,6 +84,9 @@ export function CodeEditorView() {
         const data = await res.json();
         setCode(data.content);
         setHasChanges(false);
+      } else if (res.status === 404) {
+        setCode("");
+        setHasChanges(true);
       } else {
         setCode("// Error loading file");
       }
