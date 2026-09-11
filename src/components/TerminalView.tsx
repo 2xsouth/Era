@@ -31,10 +31,15 @@ export function TerminalView() {
             <span className={log.color || "text-gray-300"}>{log.text}</span>
           </motion.div>
         ))}
-        <div className="flex gap-4 px-2 py-0.5 animate-pulse">
+        <motion.div 
+          initial={{ opacity: 0, x: -5 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: logs.length * 0.1 }}
+          className="flex gap-4 px-2 py-0.5 animate-pulse"
+        >
           <span className="text-gray-600 shrink-0">[14:32:20]</span>
           <span className="text-gray-400">Waiting for changes...<span className="animate-ping">_</span></span>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
